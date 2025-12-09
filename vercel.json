@@ -1,8 +1,7 @@
 {
-  "rewrites": [
-    { 
-      "source": "/:slug", 
-      "destination": "/api/redirect?slug=:slug" 
+  "functions": {
+    "api/redirect.js": {
+      "runtime": "nodejs18.x"
     }
-  ]
+  }
 }
