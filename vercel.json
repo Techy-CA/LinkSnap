@@ -1,7 +1,12 @@
 {
-  "functions": {
-    "api/redirect.js": {
-      "runtime": "nodejs18.x"
+  "rewrites": [
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/$1"
+    },
+    {
+      "source": "/api/:slug",
+      "destination": "/api/redirect?slug=:slug"
     }
-  }
+  ]
 }
