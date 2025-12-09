@@ -65,7 +65,7 @@ document.getElementById('shortener-form').addEventListener('submit', function(e)
         id: Date.now(),
         originalUrl: originalUrl,
         slug: slug,
-        shortUrl: `linksnap.io/${slug}`,
+        shortUrl: `link-snap-short.vercel.app/${slug}`,
         clicks: 0,
         createdAt: new Date().toISOString()
     };
