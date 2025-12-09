@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkSnap - Professional URL Shortener</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <path d="M12 8L8 12L12 16M20 8L24 12L20 16M18 4L14 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h1>LinkSnap</h1>
+            </div>
+            <nav class="nav">
+                <button class="nav-btn" onclick="showSection('shortener')">Shortener</button>
+                <button class="nav-btn" onclick="showSection('links')">My Links</button>
+            </nav>
+        </header>
+
+        <!-- Shortener Section -->
+        <section id="shortener-section" class="section active">
+            <div class="hero">
+                <h2 class="hero-title">Shorten Your Links<br><span class="gradient-text">Amplify Your Reach</span></h2>
+                <p class="hero-subtitle">Create short, powerful links that track engagement and boost your brand</p>
+            </div>
+
+            <div class="card main-card">
+                <form id="shortener-form">
+                    <div class="input-group">
+                        <label for="original-url">Enter your long URL</label>
+                        <input 
+                            type="url" 
+                            id="original-url" 
+                            placeholder="https://example.com/very-long-url-here"
+                            required
+                        >
+                    </div>
+
+                    <div class="input-group">
+                        <label for="custom-slug">Custom alias (optional)</label>
+                        <div class="slug-input-wrapper">
+                            <span class="domain-prefix">linksnap.io/</span>
+                            <input 
+                                type="text" 
+                                id="custom-slug" 
+                                placeholder="my-link"
+                                pattern="[a-zA-Z0-9-_]+"
+                            >
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        <span>Shorten URL</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4 10H16M16 10L12 6M16 10L12 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </form>
+
+                <div id="result-container" class="result-container hidden">
+                    <div class="result-success">
+                        <div class="success-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="result-content">
+                            <p class="result-label">Your shortened link</p>
+                            <div class="result-link">
+                                <a href="#" id="short-url-link" target="_blank"></a>
+                                <button class="btn-copy" onclick="copyToClipboard()">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path d="M8 4H6C5.46957 4 4.96086 4.21071 4.58579 4.58579C4.21071 4.96086 4 5.46957 4 6V14C4 14.5304 4.21071 15.0391 4.58579 15.4142C4.96086 15.7893 5.46957 16 6 16H14C14.5304 16 15.0391 15.7893 15.4142 15.4142C15.7893 15.0391 16 14.5304 16 14V12M12 4H16M16 4V8M16 4L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-secondary" onclick="createAnother()">Create Another Link</button>
+                </div>
+            </div>
+
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Instant link generation with zero delays</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Custom Aliases</h3>
+                    <p>Create memorable, branded short links</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Track Clicks</h3>
+                    <p>Monitor your link performance in real-time</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Links Section -->
+        <section id="links-section" class="section">
+            <div class="hero">
+                <h2 class="hero-title">Your <span class="gradient-text">Shortened Links</span></h2>
+                <p class="hero-subtitle">Manage and track all your shortened URLs</p>
+            </div>
+
+            <div id="links-container" class="links-container">
+                <!-- Links will be dynamically added here -->
+            </div>
+        </section>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
