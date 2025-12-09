@@ -1,12 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/((?!api/).*)",
-      "destination": "/$1"
-    },
-    {
-      "source": "/api/:slug",
-      "destination": "/api/redirect?slug=:slug"
+      "source": "/:slug",
+      "destination": "/api/:slug"
     }
   ]
 }
